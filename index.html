@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLP 299/26: Ajuste Fiscal e Voto de PE | Jamildo.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --noite: #051529;
+      --noite-card: #081d38;
+      --azul: #024796;
+      --azulvivo: #3d8bff;
+      --laranja: #f83d03;
+      --laranja2: #ffa05c;
+      --verde: #2fd28a;
+      --ambar: #ffbe3d;
+      --cinza: #64748b;
+      --txt: #eaf1ff;
+      --suave: #92a6c6;
+      --vidro: rgba(255, 255, 255, 0.055);
+      --vidro-hover: rgba(255, 255, 255, 0.095);
+      --borda: rgba(255, 255, 255, 0.12);
+      --borda-fina: rgba(255, 255, 255, 0.07);
+      --disp: 'Bricolage Grotesque', 'DM Sans', system-ui, sans-serif;
+      --corpo: 'DM Sans', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--noite);
+      color: var(--txt);
+      font-family: var(--corpo);
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(820px 520px at 92% -5%, rgba(248, 61, 3, 0.20), transparent 60%),
+        radial-gradient(900px 600px at -8% 18%, rgba(61, 139, 255, 0.18), transparent 60%),
+        linear-gradient(180deg, #07203f 0%, var(--noite) 75%);
+      background-attachment: fixed;
+    }
+
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--laranja2); outline-offset: 2px; }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .vidro {
+      background: var(--vidro);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* BARRA SUPERIOR */
+    .barra {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(5, 21, 41, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .barra .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 26px;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
+    .logo-tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 9px;
+      border-radius: 99px;
+      background: rgba(248, 61, 3, 0.16);
+      border: 1px solid rgba(248, 61, 3, 0.38);
+      color: var(--laranja2);
+    }
+
+    .busca {
+      flex: 1;
+      min-width: 220px;
+      max-width: 340px;
+      position: relative;
+    }
+
+    .busca input {
+      width: 100%;
+      background: var(--vidro);
+      border: 1.5px solid var(--borda);
+      border-radius: 99px;
+      padding: 8px 14px 8px 36px;
+      outline: 0;
+      font-size: 0.84rem;
+      transition: all 0.2s ease;
+    }
+
+    .busca input::placeholder { color: var(--suave); }
+
+    .busca input:focus {
+      border-color: var(--laranja);
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: 0 0 0 4px rgba(248, 61, 3, 0.16);
+    }
+
+    .busca-ico {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.85rem;
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .hub-botoes {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hub-btn {
+      border: 1px solid var(--borda);
+      background: var(--vidro);
+      padding: 6px 13px;
+      border-radius: 99px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--suave);
+      transition: all 0.15s ease;
+    }
+
+    .hub-btn:hover {
+      background: var(--vidro-hover);
+      color: #fff;
+      border-color: var(--laranja2);
+    }
+
+    .hub-btn.ativo {
+      background: linear-gradient(135deg, var(--laranja), #ff7a3a);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 14px -3px rgba(248, 61, 3, 0.65);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 22px 0 16px;
+      display: block;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--verde);
+      background: rgba(47, 210, 138, 0.12);
+      border: 1px solid rgba(47, 210, 138, 0.30);
+      padding: 4px 10px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--verde);
+      box-shadow: 0 0 0 0 rgba(47, 210, 138, 0.7);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(47, 210, 138, 0.7); }
+      70% { box-shadow: 0 0 0 7px rgba(47, 210, 138, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(47, 210, 138, 0); }
+    }
+
+    .hero h1 {
+      font-family: var(--disp);
+      font-weight: 800;
+      font-size: clamp(1.65rem, 3.3vw, 2.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--laranja), var(--laranja2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--suave);
+      margin-top: 8px;
+      font-size: 0.9rem;
+      max-width: 62ch;
+    }
+
+    .hero p b { color: #fff; }
+
+    /* TRAMITAÇÃO STEPPER (RODAPÉ DE CONTEÚDO) */
+    .tramitacao-card {
+      padding: 16px 18px;
+      margin-bottom: 22px;
+    }
+
+    .tramitacao-title {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--suave);
+      margin-bottom: 12px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 7px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--borda-fina);
+      font-size: 0.8rem;
+    }
+
+    .step.done {
+      border-color: rgba(47, 210, 138, 0.28);
+      background: rgba(47, 210, 138, 0.07);
+    }
+
+    .step.next {
+      border-color: rgba(255, 190, 61, 0.35);
+      background: rgba(255, 190, 61, 0.08);
+    }
+
+    .step-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    .step-badge {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+
+    .step.done .step-badge {
+      background: rgba(47, 210, 138, 0.18);
+      color: var(--verde);
+    }
+
+    .step.next .step-badge {
+      background: rgba(255, 190, 61, 0.18);
+      color: var(--ambar);
+    }
+
+    /* KPI STRIP */
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .kpi {
+      padding: 14px 16px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .kpi:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .kpi-label {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--suave);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .kpi-val {
+      font-family: var(--disp);
+      font-size: 1.65rem;
+      font-weight: 800;
+      margin-top: 2px;
+      line-height: 1.1;
+    }
+
+    .kpi-sub {
+      font-size: 0.76rem;
+      color: var(--suave);
+      margin-top: 4px;
+    }
+
+    .kpi-bar {
+      height: 4px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.08);
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .kpi-bar > span {
+      display: block;
+      height: 100%;
+      border-radius: 99px;
+    }
+
+    /* GRADE PRINCIPAL */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
+      align-items: start;
+      padding-bottom: 20px;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .panel-head h2 {
+      font-family: var(--disp);
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-head p {
+      font-size: 0.8rem;
+      color: var(--suave);
+      margin-top: 2px;
+    }
+
+    /* FILTROS DO PLENÁRIO */
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      border-radius: 99px;
+      border: 1px solid var(--borda);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--suave);
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      background: var(--vidro-hover);
+      color: #fff;
+    }
+
+    .filter-btn.active {
+      background: #fff;
+      color: var(--noite);
+      border-color: #fff;
+    }
+
+    .filter-btn[data-filter="sim"].active {
+      background: var(--azulvivo);
+      border-color: var(--azulvivo);
+      color: #fff;
+    }
+
+    .filter-btn[data-filter="nao"].active {
+      background: var(--laranja);
+      border-color: var(--laranja);
+      color: #fff;
+    }
+
+    .filter-btn[data-filter="falta"].active {
+      background: var(--cinza);
+      border-color: var(--cinza);
+      color: #fff;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot-sim { background: var(--azulvivo); }
+    .dot-nao { background: var(--laranja); }
+    .dot-falta { background: var(--cinza); }
+
+    /* PALCO DO PLENÁRIO */
+    .plenario-stage {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background: radial-gradient(circle at 50% 88%, rgba(61, 139, 255, 0.14), rgba(5, 21, 41, 0.45) 70%);
+      border: 1px solid var(--borda-fina);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .plenario-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .seat {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.24s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease, box-shadow 0.2s ease;
+      background-color: #0b2748;
+      border: 2.5px solid transparent;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+    }
+
+    .seat:hover, .seat.selected {
+      transform: translate(-50%, -50%) scale(1.25);
+      z-index: 20;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.18), 0 10px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .seat.dimmed {
+      opacity: 0.16;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    .seat img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+
+    .seat.voto-sim { border-color: var(--azulvivo); }
+    .seat.voto-nao { border-color: var(--laranja); }
+    .seat.voto-falta { border-color: var(--cinza); }
+    .seat.voto-falta img { filter: grayscale(100%) contrast(1.08); }
+
+    .plenario-center-info {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .plenario-center-info .total-num {
+      font-family: var(--disp);
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .plenario-center-info .total-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--suave);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 3px;
+    }
+
+    /* CARD DE DETALHE DO DEPUTADO */
+    .detail-card {
+      margin-top: 12px;
+      background: rgba(8, 29, 56, 0.85);
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .detail-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .detail-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 2.5px solid var(--azulvivo);
+      flex-shrink: 0;
+      background: #0b2748;
+    }
+
+    .detail-info h3 {
+      font-family: var(--disp);
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .detail-info span {
+      font-size: 0.78rem;
+      color: var(--suave);
+      font-weight: 500;
+    }
+
+    .detail-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .detail-badge {
+      font-family: var(--mono);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .badge-sim { background: rgba(61, 139, 255, 0.25); border: 1px solid var(--azulvivo); color: #9ec5ff; }
+    .badge-nao { background: rgba(248, 61, 3, 0.25); border: 1px solid var(--laranja); color: #ffb39c; }
+    .badge-falta { background: rgba(100, 116, 139, 0.28); border: 1px solid var(--cinza); color: #cbd5e1; }
+
+    .nav-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      border: 1px solid var(--borda);
+      background: var(--vidro);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      transition: background 0.15s ease;
+    }
+
+    .nav-arrow:hover { background: var(--vidro-hover); border-color: var(--laranja2); }
+
+    /* CARDS DO AJUSTE FISCAL */
+    .fiscal-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .fiscal-tabs {
+      display: flex;
+      gap: 6px;
+      background: rgba(5, 21, 41, 0.55);
+      padding: 5px;
+      border-radius: 12px;
+      border: 1px solid var(--borda-fina);
+    }
+
+    .fiscal-tab {
+      flex: 1;
+      border: 0;
+      background: transparent;
+      color: var(--suave);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .fiscal-tab.ativo {
+      background: linear-gradient(135deg, rgba(248, 61, 3, 0.28), rgba(61, 139, 255, 0.25));
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .fiscal-pane { display: none; animation: fadeIn 0.22s ease; }
+    .fiscal-pane.ativo { display: flex; flex-direction: column; gap: 12px; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .rule-card {
+      background: rgba(8, 29, 56, 0.65);
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      padding: 14px 16px;
+      transition: border-color 0.2s ease;
+    }
+
+    .rule-card:hover { border-color: rgba(255, 160, 92, 0.45); }
+
+    .rule-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .rule-tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(61, 139, 255, 0.16);
+      color: #9ec5ff;
+    }
+
+    .rule-tag.orange {
+      background: rgba(248, 61, 3, 0.18);
+      color: var(--laranja2);
+    }
+
+    .rule-tag.green {
+      background: rgba(47, 210, 138, 0.16);
+      color: var(--verde);
+    }
+
+    .rule-card h3 {
+      font-family: var(--disp);
+      font-size: 1.02rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .rule-card p {
+      font-size: 0.83rem;
+      color: var(--suave);
+      line-height: 1.5;
+    }
+
+    /* COMPARADOR TETO DE GASTOS */
+    .compare-box {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: rgba(5, 21, 41, 0.55);
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--borda-fina);
+    }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 48px;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.76rem;
+    }
+
+    .compare-track {
+      height: 10px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .compare-fill {
+      height: 100%;
+      border-radius: 99px;
+    }
+
+    .compare-num {
+      font-family: var(--mono);
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* LISTA DAS 5 EXCEÇÕES */
+    .shield-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .shield-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(8, 29, 56, 0.65);
+      border: 1px solid var(--borda-fina);
+      font-size: 0.82rem;
+      color: var(--txt);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .shield-item:hover {
+      transform: translateX(3px);
+      border-color: rgba(47, 210, 138, 0.4);
+    }
+
+    .shield-num {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      background: rgba(47, 210, 138, 0.16);
+      color: var(--verde);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* CITAÇÃO HUGO MOTTA */
+    .quote-card {
+      background: linear-gradient(135deg, rgba(2, 71, 150, 0.28), rgba(248, 61, 3, 0.14));
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .quote-card blockquote {
+      font-size: 0.86rem;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .quote-author {
+      margin-top: 8px;
+      font-size: 0.74rem;
+      color: var(--laranja2);
+      font-weight: 700;
+      font-family: var(--mono);
+    }
+
+    /* RODAPÉ */
+    .footer {
+      border-top: 1px solid var(--borda-fina);
+      padding: 14px 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.74rem;
+      color: var(--suave);
+    }
+
+    .footer a {
+      color: var(--laranja2);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 960px) {
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .main-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      .kpis { grid-template-columns: 1fr; }
+      .busca { max-width: 100%; order: 3; flex-basis: 100%; }
+      .plenario-stage { height: 310px; }
+      .detail-card { flex-direction: column; align-items: flex-start; }
+      .detail-right { width: 100%; justify-content: space-between; }
+      .compare-row { grid-template-columns: 95px 1fr 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <header class="barra">
+    <div class="wrap">
+      <a href="https://jamildo.com" target="_blank" rel="noopener noreferrer" class="logo" title="Jamildo.com">
+        <img src="https://jamildo.com/media/uploads/logojamildo.png" alt="Logo Jamildo.com">
+        <span class="logo-tag">PLP 299/26</span>
+      </a>
+
+      <div class="busca">
+        <span class="busca-ico">🔎</span>
+        <input type="text" id="searchInput" placeholder="Buscar deputado ou partido de PE...">
+      </div>
+
+      <div class="hub-botoes">
+        <button class="hub-btn ativo" data-jump="plenarioSection">Plenário PE</button>
+        <button class="hub-btn" data-jump="fiscalSection">Regras 2027</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="hero-kicker">
+          <span class="pulse-dot"></span>
+          APROVADO NA CÂMARA • MADRUGADA DE TERÇA-FEIRA (24)
+        </div>
+        <h1>Ajuste fiscal de 2027 e o <span>voto de Pernambuco</span></h1>
+        <p>
+          A Câmara aprovou o <b>PLP 299/26</b> por <b>353 votos a 128</b> (com 5 abstenções) sem mudanças no texto do Senado.
+          Na bancada pernambucana, foram <b>21 votos a favor</b>, <b>2 contrários</b> e <b>2 ausências</b>.
+        </p>
+      </div>
+    </section>
+
+    <!-- KPIS -->
+    <section class="kpis">
+      <div class="vidro kpi">
+        <div class="kpi-label">Placar Geral na Câmara</div>
+        <div class="kpi-val" style="color: var(--azulvivo);">353 a 128</div>
+        <div class="kpi-sub">5 abstenções na sessão extraordinária</div>
+        <div class="kpi-bar"><span style="width: 72.6%; background: linear-gradient(90deg, var(--azulvivo), var(--verde));"></span></div>
+      </div>
+
+      <div class="vidro kpi">
+        <div class="kpi-label">Bancada de Pernambuco</div>
+        <div class="kpi-val" style="color: var(--verde);">21 de 25</div>
+        <div class="kpi-sub">84% a favor • 2 contra • 2 ausentes</div>
+        <div class="kpi-bar"><span style="width: 84%; background: var(--verde);"></span></div>
+      </div>
+
+      <div class="vidro kpi">
+        <div class="kpi-label">Gatilho do Novo Teto</div>
+        <div class="kpi-val" style="color: var(--laranja2);">2,0% ao ano</div>
+        <div class="kpi-sub">Abaixo do limite atual de 2,5%</div>
+        <div class="kpi-bar"><span style="width: 80%; background: linear-gradient(90deg, var(--laranja), var(--laranja2));"></span></div>
+      </div>
+
+      <div class="vidro kpi">
+        <div class="kpi-label">Alerta na CMO</div>
+        <div class="kpi-val" style="color: var(--ambar);">0,5% do PIB</div>
+        <div class="kpi-sub">Piso que exige explicação ao Congresso</div>
+        <div class="kpi-bar"><span style="width: 50%; background: var(--ambar);"></span></div>
+      </div>
+    </section>
+
+    <!-- GRADE PRINCIPAL -->
+    <section class="main-grid">
+      <!-- COLUNA ESQUERDA: PLENÁRIO DE PERNAMBUCO -->
+      <div class="vidro panel" id="plenarioSection">
+        <div class="panel-head">
+          <div>
+            <h2>Como votou cada deputado de PE</h2>
+            <p>Passe o mouse ou clique na foto para inspecionar o voto</p>
+          </div>
+        </div>
+
+        <div class="filter-group" id="filterGroup">
+          <button class="filter-btn active" data-filter="todos">Todos (25)</button>
+          <button class="filter-btn" data-filter="sim"><span class="dot dot-sim"></span> Sim (21)</button>
+          <button class="filter-btn" data-filter="nao"><span class="dot dot-nao"></span> Não (2)</button>
+          <button class="filter-btn" data-filter="falta"><span class="dot dot-falta"></span> Ausente (2)</button>
+        </div>
+
+        <div class="plenario-stage">
+          <div class="plenario-container" id="plenario">
+            <div class="plenario-center-info">
+              <div class="total-num" id="centerCount">21 a 2</div>
+              <div class="total-label" id="centerLabel">2 ausentes • 25 deputados</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-card" id="detailCard">
+          <div class="detail-left">
+            <img src="https://www.camara.leg.br/internet/deputado/bandep/160665.jpg" alt="Foto do deputado" class="detail-avatar" id="detailImg">
+            <div class="detail-info">
+              <h3 id="detailName">Augusto Coutinho</h3>
+              <span id="detailParty">REPUBLICANOS • Pernambuco</span>
+            </div>
+          </div>
+          <div class="detail-right">
+            <div class="detail-badge badge-sim" id="detailBadge">Votou Sim</div>
+            <button class="nav-arrow" id="prevDep" title="Deputado anterior" aria-label="Anterior">&#8249;</button>
+            <button class="nav-arrow" id="nextDep" title="Próximo deputado" aria-label="Próximo">&#8250;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA: CARDS DO AJUSTE FISCAL -->
+      <div class="vidro panel fiscal-stack" id="fiscalSection">
+        <div class="panel-head" style="margin-bottom: 4px;">
+          <div>
+            <h2>O que muda nas contas em 2027</h2>
+            <p>Navegue pelas regras do PLP 299/26 aprovadas pelo Congresso</p>
+          </div>
+        </div>
+
+        <div class="fiscal-tabs" role="tablist">
+          <button class="fiscal-tab ativo" data-tab="regras">Travas e Metas</button>
+          <button class="fiscal-tab" data-tab="protegidas">5 Áreas Protegidas</button>
+          <button class="fiscal-tab" data-tab="bastidor">Articulação</button>
+        </div>
+
+        <!-- ABA 1: TRAVAS E METAS -->
+        <div class="fiscal-pane ativo" id="pane-regras">
+          <div class="rule-card">
+            <div class="rule-top">
+              <span class="rule-tag orange">Bloqueio extra em 2027</span>
+            </div>
+            <h3>Crescimento real cai de 2,5% para 2%</h3>
+            <p>
+              Se o relatório bimestral apontar risco à meta fiscal a partir de 2027, o governo poderá bloquear mais verbas do que prevê a LRF hoje. Com o mecanismo ativo, o avanço real da despesa fica travado em 2%.
+            </p>
+            <div class="compare-box">
+              <div class="compare-row">
+                <span>Arcabouço hoje</span>
+                <div class="compare-track"><div class="compare-fill" style="width: 100%; background: var(--azulvivo);"></div></div>
+                <span class="compare-num">2,5%</span>
+              </div>
+              <div class="compare-row">
+                <span>Com gatilho 2027</span>
+                <div class="compare-track"><div class="compare-fill" style="width: 80%; background: linear-gradient(90deg, var(--laranja), var(--laranja2));"></div></div>
+                <span class="compare-num" style="color: var(--laranja2);">2,0%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="rule-card">
+            <div class="rule-top">
+              <span class="rule-tag">Prestação de contas</span>
+            </div>
+            <h3>Superávit abaixo de 0,5% do PIB</h3>
+            <p>
+              Sempre que o resultado primário anual ficar abaixo de 0,5% do PIB, o Executivo terá de explicar à Comissão Mista de Orçamento (CMO) os motivos do desempenho e as medidas para corrigir as contas.
+            </p>
+          </div>
+
+          <div class="rule-card">
+            <div class="rule-top">
+              <span class="rule-tag green">Foco e transparência</span>
+            </div>
+            <h3>Apenas Poder Executivo</h3>
+            <p>
+              O contingenciamento adicional atinge somente gastos do Executivo. Eventuais cortes ou cancelamentos precisam constar na lei orçamentária com os valores e programas afetados.
+            </p>
+          </div>
+        </div>
+
+        <!-- ABA 2: 5 ÁREAS PROTEGIDAS -->
+        <div class="fiscal-pane" id="pane-protegidas">
+          <div class="rule-card" style="padding: 12px 14px;">
+            <div class="rule-top" style="margin-bottom: 2px;">
+              <span class="rule-tag green">Fora do bloqueio extra</span>
+            </div>
+            <p>O texto aprovado blinda cinco categorias de despesas contra o contingenciamento adicional:</p>
+          </div>
+
+          <div class="shield-list">
+            <div class="shield-item">
+              <span class="shield-num">1</span>
+              <div><strong>Obrigações constitucionais</strong> previstas na Carta Magna.</div>
+            </div>
+            <div class="shield-item">
+              <span class="shield-num">2</span>
+              <div><strong>Despesas obrigatórias</strong> não sujeitas à disponibilidade orçamentária.</div>
+            </div>
+            <div class="shield-item">
+              <span class="shield-num">3</span>
+              <div>Gastos com o <strong>serviço da dívida pública</strong>.</div>
+            </div>
+            <div class="shield-item">
+              <span class="shield-num">4</span>
+              <div>Investimentos em <strong>inovação, ciência e tecnologia</strong> custeados pelo FNDCT.</div>
+            </div>
+            <div class="shield-item">
+              <span class="shield-num">5</span>
+              <div>Despesas ressalvadas pela <strong>Lei de Diretrizes Orçamentárias (LDO)</strong>.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ABA 3: ARTICULAÇÃO -->
+        <div class="fiscal-pane" id="pane-bastidor">
+          <div class="quote-card">
+            <blockquote>
+              "É um primeiro passo e o país precisa continuar nessa agenda com responsabilidade."
+            </blockquote>
+            <div class="quote-author">Hugo Motta, presidente da Câmara, no X</div>
+          </div>
+
+          <div class="rule-card">
+            <div class="rule-top">
+              <span class="rule-tag">Discurso pós-votação</span>
+            </div>
+            <h3>Orçamento de 2027 e investimentos</h3>
+            <p>
+              Após a votação, Hugo Motta afirmou que a proposta dá condições para organizar o orçamento de 2027, manter investimentos e cuidar da população mais pobre.
+            </p>
+          </div>
+
+          <div class="rule-card">
+            <div class="rule-top">
+              <span class="rule-tag orange">Dissidências em PE</span>
+            </div>
+            <h3>Oposição e ausências no PL e PP</h3>
+            <p>
+              Dos 25 deputados pernambucanos, apenas André Ferreira (PL) e Clarissa Tércio (PP) votaram contra. Coronel Meira (PL) e Mendonça Filho (PL) não registraram presença.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vidro tramitacao-card" id="ritoSection">
+      <div class="tramitacao-title">Rito no Congresso</div>
+      <div class="steps">
+        <div class="step done">
+          <div class="step-left"><span>1. Senado Federal</span></div>
+          <span class="step-badge">Aprovado (18)</span>
+        </div>
+        <div class="step done">
+          <div class="step-left"><span>2. Câmara dos Deputados</span></div>
+          <span class="step-badge">Aprovado (24)</span>
+        </div>
+        <div class="step next">
+          <div class="step-left"><span>3. Sanção Presidencial</span></div>
+          <span class="step-badge">Próximo passo</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Fonte: Câmara dos Deputados • Votação do PLP 299/26 (24/11/2026)</span>
+      <span>Infográfico interativo: <a href="https://jamildo.com" target="_blank" rel="noopener noreferrer">Jamildo.com</a></span>
+    </footer>
+  </main>
+
+  <script>
+    const deputados = [
+      // Votaram NÃO
+      { nome: "André Ferreira", partido: "PL", voto: "nao", votoTexto: "Votou Não", foto: "https://www.camara.leg.br/internet/deputado/bandep/204423.jpg" },
+      { nome: "Clarissa Tércio", partido: "PP", voto: "nao", votoTexto: "Votou Não", foto: "https://www.camara.leg.br/internet/deputado/bandep/220665.jpg" },
+
+      // Votaram SIM
+      { nome: "Augusto Coutinho", partido: "REPUBLICANOS", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/160665.jpg" },
+      { nome: "Carlos Veras", partido: "PT", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/204426.jpg" },
+      { nome: "Clodoaldo Magalhães", partido: "PV", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/88256.jpg" },
+      { nome: "Eduardo da Fonte", partido: "PP", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/141421.jpg" },
+      { nome: "Eriberto Medeiros", partido: "PSB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/220663.jpg" },
+      { nome: "Felipe Carreras", partido: "PSB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/72442.jpg" },
+      { nome: "Fernando Coelho Filho", partido: "UNIÃO", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/141431.jpg" },
+      { nome: "Fernando Monteiro", partido: "PSD", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/92699.jpg" },
+      { nome: "Fernando Rodolfo", partido: "PRD", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/204427.jpg" },
+      { nome: "Guilherme Uchoa", partido: "PSD", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/220664.jpg" },
+      { nome: "Iza Arruda", partido: "MDB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/220670.jpg" },
+      { nome: "Lucas Ramos", partido: "PSB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/220662.jpg" },
+      { nome: "Luciano Bivar", partido: "MDB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/74478.jpg" },
+      { nome: "Lula da Fonte", partido: "PP", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/220669.jpg" },
+      { nome: "Maria Arraes", partido: "PSB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/220668.jpg" },
+      { nome: "Pastor Eurico", partido: "PSDB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/160642.jpg" },
+      { nome: "Pedro Campos", partido: "PSB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/220667.jpg" },
+      { nome: "Renildo Calheiros", partido: "PCdoB", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/73801.jpg" },
+      { nome: "Silvio Costa Filho", partido: "REPUBLICANOS", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/204425.jpg" },
+      { nome: "Túlio Gadêlha", partido: "PSD", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/157130.jpg" },
+      { nome: "Waldemar Oliveira", partido: "AVANTE", voto: "sim", votoTexto: "Votou Sim", foto: "https://www.camara.leg.br/internet/deputado/bandep/91228.jpg" },
+
+      // Ausentes
+      { nome: "Coronel Meira", partido: "PL", voto: "falta", votoTexto: "Ausente (Falta)", foto: "https://www.camara.leg.br/internet/deputado/bandep/220666.jpg" },
+      { nome: "Mendonça Filho", partido: "PL", voto: "falta", votoTexto: "Ausente (Falta)", foto: "https://www.camara.leg.br/internet/deputado/bandep/74428.jpg" }
+    ];
+
+    const plenarioEl = document.getElementById("plenario");
+    const detailImg = document.getElementById("detailImg");
+    const detailName = document.getElementById("detailName");
+    const detailParty = document.getElementById("detailParty");
+    const detailBadge = document.getElementById("detailBadge");
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const searchInput = document.getElementById("searchInput");
+
+    let currentFilter = "todos";
+    let currentSearch = "";
+    let selectedIndex = 2;
+
+    const rows = [6, 8, 11];
+
+    function generateSeatsCoords() {
+      const coords = [];
+      rows.forEach((count, rowIndex) => {
+        for (let i = 0; i < count; i++) {
+          const startAngle = Math.PI * 0.95;
+          const endAngle = Math.PI * 0.05;
+          const angle = startAngle - (i / (count - 1)) * (startAngle - endAngle);
+          coords.push({ angle, rowIndex });
+        }
+      });
+      coords.sort((a, b) => b.angle - a.angle);
+      return coords;
+    }
+
+    const seatCoords = generateSeatsCoords();
+    const seatElements = [];
+
+    function initSeats() {
+      deputados.forEach((dep, idx) => {
+        const seat = document.createElement("div");
+        seat.className = `seat voto-${dep.voto}`;
+        seat.dataset.index = idx;
+        seat.title = `${dep.nome} (${dep.partido}) - ${dep.votoTexto}`;
+
+        const img = document.createElement("img");
+        img.src = dep.foto;
+        img.alt = dep.nome;
+        img.loading = "lazy";
+        seat.appendChild(img);
+
+        seat.addEventListener("mouseenter", () => selectDeputado(idx));
+        seat.addEventListener("click", () => selectDeputado(idx));
+        plenarioEl.appendChild(seat);
+        seatElements.push(seat);
+      });
+    }
+
+    function renderPlenario() {
+      if (seatElements.length === 0) initSeats();
+
+      const rect = plenarioEl.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+      const isMobile = w < 460;
+      const seatSize = isMobile ? Math.max(32, Math.floor(w / 11.2)) : Math.min(56, Math.floor(w / 11.4));
+
+      const centerX = w / 2;
+      const centerY = h * 0.85;
+      const maxRadius = Math.min((w / 2) - seatSize * 0.65, (h * 0.78) - seatSize * 0.65);
+      const minRadius = maxRadius * 0.45;
+      const stepRadius = (maxRadius - minRadius) / (rows.length - 1);
+
+      seatElements.forEach((seat, idx) => {
+        const pos = seatCoords[idx];
+        const radius = minRadius + pos.rowIndex * stepRadius;
+        const x = centerX + radius * Math.cos(pos.angle);
+        const y = centerY - radius * Math.sin(pos.angle);
+
+        seat.style.width = `${seatSize}px`;
+        seat.style.height = `${seatSize}px`;
+        seat.style.left = `${x}px`;
+        seat.style.top = `${y}px`;
+      });
+
+      applyFilters();
+      selectDeputado(selectedIndex);
+    }
+
+    function selectDeputado(idx) {
+      const dep = deputados[idx];
+      if (!dep) return;
+      selectedIndex = idx;
+
+      document.querySelectorAll(".seat").forEach(el => el.classList.remove("selected"));
+      const target = plenarioEl.querySelector(`.seat[data-index="${idx}"]`);
+      if (target) target.classList.add("selected");
+
+      detailImg.src = dep.foto;
+      detailName.textContent = dep.nome;
+      detailParty.textContent = `${dep.partido} • Pernambuco`;
+      detailBadge.textContent = dep.votoTexto;
+      detailBadge.className = `detail-badge badge-${dep.voto}`;
+
+      const colors = { sim: "#3d8bff", nao: "#f83d03", falta: "#64748b" };
+      detailImg.style.borderColor = colors[dep.voto];
+    }
+
+    function applyFilters() {
+      const seats = plenarioEl.querySelectorAll(".seat");
+      let firstMatch = null;
+
+      seats.forEach(seat => {
+        const idx = parseInt(seat.dataset.index, 10);
+        const dep = deputados[idx];
+        const matchesVote = currentFilter === "todos" || dep.voto === currentFilter;
+        const matchesText =
+          dep.nome.toLowerCase().includes(currentSearch) ||
+          dep.partido.toLowerCase().includes(currentSearch);
+
+        if (matchesVote && matchesText) {
+          seat.classList.remove("dimmed");
+          if (firstMatch === null) firstMatch = idx;
+        } else {
+          seat.classList.add("dimmed");
+        }
+      });
+
+      if (firstMatch !== null && (currentFilter !== "todos" || currentSearch !== "")) {
+        selectDeputado(firstMatch);
+      }
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener("input", e => {
+      currentSearch = e.target.value.trim().toLowerCase();
+      applyFilters();
+    });
+
+    document.getElementById("prevDep").addEventListener("click", () => {
+      selectDeputado((selectedIndex - 1 + deputados.length) % deputados.length);
+    });
+
+    document.getElementById("nextDep").addEventListener("click", () => {
+      selectDeputado((selectedIndex + 1) % deputados.length);
+    });
+
+    // Abas dos cards do ajuste fiscal
+    document.querySelectorAll(".fiscal-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        document.querySelectorAll(".fiscal-tab").forEach(t => t.classList.remove("ativo"));
+        document.querySelectorAll(".fiscal-pane").forEach(p => p.classList.remove("ativo"));
+        tab.classList.add("ativo");
+        document.getElementById(`pane-${tab.dataset.tab}`).classList.add("ativo");
+      });
+    });
+
+    // Navegação rápida no topo
+    document.querySelectorAll(".hub-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".hub-btn").forEach(b => b.classList.remove("ativo"));
+        btn.classList.add("ativo");
+        document.getElementById(btn.dataset.jump).scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    window.addEventListener("resize", renderPlenario);
+    renderPlenario();
+  </script>
+</body>
+</html>
